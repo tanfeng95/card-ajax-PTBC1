@@ -14,6 +14,59 @@ module.exports = {
         // all game state (e.g. cardDeck, playerHand) in the gameState JSON column.
         type: Sequelize.JSON,
       },
+      game_winner: {
+        type: Sequelize.JSON,
+      },
+      created_at: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+    });
+
+    await queryInterface.createTable('users', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      email: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      password: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      created_at: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+    });
+
+    await queryInterface.createTable('games_users', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      game_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      user_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -27,5 +80,7 @@ module.exports = {
 
   down: async (queryInterface) => {
     await queryInterface.dropTable('games');
+    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('games_users');
   },
 };

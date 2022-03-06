@@ -1,22 +1,24 @@
-export default function gameModel(sequelize, DataTypes) {
-  return sequelize.define('game', {
+export default function usersModel(sequelize, DataTypes) {
+  return sequelize.define('users', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    gameState: {
-      type: DataTypes.JSON,
+    email: {
+      allowNull: false,
+      type: DataTypes.STRING,
     },
-    game_winner: {
-      type: DataTypes.JSON,
+    password: {
+      allowNull: false,
+      type: DataTypes.STRING,
     },
-    createdAt: {
+    created_at: {
       allowNull: false,
       type: DataTypes.DATE,
     },
-    updatedAt: {
+    updated_at: {
       allowNull: false,
       type: DataTypes.DATE,
     },

@@ -17,9 +17,11 @@ app.use(methodOverride('_method'));
 // Expose the files stored in the public folder
 app.use(express.static('public'));
 
+app.use(express.json());
+
 // Bind route definitions to the Express application
 bindRoutes(app);
 
 // Set Express to listen on the given port
-const PORT = process.env.PORT || 3004;
+const PORT = process.env.PORT || 3005;
 app.listen(PORT);
